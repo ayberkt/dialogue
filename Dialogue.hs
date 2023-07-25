@@ -38,3 +38,6 @@ toExternal d = d Eta Beta
 modulusAt :: (Int -> y) -> Dialogue Int y z -> Int
 modulusAt f (Eta _)      = 0
 modulusAt f (Beta phi n) = max n (modulusAt f (phi (f n)))
+
+modulusAtInt :: (Int -> y) -> IntDialogue Int y z -> Int
+modulusAtInt f d = d (\z -> 0) (\g x -> max x (g (f x)))
