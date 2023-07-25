@@ -1,4 +1,4 @@
-{-# LANGUAGE ExistentialQuantification #-}
+{-# LANGUAGE RankNTypes #-}
 
 module Dialogue where
 
@@ -37,4 +37,4 @@ toExternal d = d Eta Beta
 
 modulusAt :: (Int -> y) -> Dialogue Int y z -> Int
 modulusAt f (Eta _)      = 0
-modulusAt f (Beta phi n) = undefined
+modulusAt f (Beta phi n) = max n (modulusAt f (phi (f n)))
