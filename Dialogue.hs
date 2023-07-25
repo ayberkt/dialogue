@@ -34,3 +34,7 @@ toInternal (Beta phi x) = intBeta (\y -> toInternal (phi y)) x
 
 toExternal :: IntDialogue x y z -> Dialogue x y z
 toExternal d = d Eta Beta
+
+modulusAt :: (Int -> y) -> Dialogue Int y z -> Int
+modulusAt f (Eta _)      = 0
+modulusAt f (Beta phi n) = undefined
